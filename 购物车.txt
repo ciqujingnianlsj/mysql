@@ -1,0 +1,1 @@
+create table gouwuche(id int(5) primary key not null auto_increment,name varchar(30) not null unique,price varchar(10) not null,quantity varchar(5));
