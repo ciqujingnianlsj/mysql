@@ -1,0 +1,10 @@
+select * from countries;
+ select * from locations;
+select distinct REGION_ID from countries;
+ select * from countries where REGION_ID=2;
+ select REGION_ID from countries order by REGION_ID;
+select * from countries order by REGION_ID;
+ select * from countries order by REGION_ID limit 2,3;
+select sum(REGION_ID) from countries;
+ select REGION_ID,count(REGION_ID) from countries;
+select * from countries where REGION_ID in (select REGION_ID from countries where REGION_ID=2);
