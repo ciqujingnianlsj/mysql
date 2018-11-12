@@ -1,0 +1,49 @@
+create table movies(name varchar(20),year char(4),director char(10),score char(4));
+desc movies;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(20) | YES  |     | NULL    |       |
+| year     | char(4)     | YES  |     | NULL    |       |
+| director | char(10)    | YES  |     | NULL    |       |
+| score    | char(4)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+ insert into movies(name,year,director,score) values
+    -> ("longzhu","2004","kdjhg","7"),
+    -> ("kenan","2008","sdff","8"),
+    -> ("taiji","2013","ldfhh","6"),
+    -> ("shouji","2015","adas","5");
+select * from movies;
++---------+------+----------+-------+
+| name    | year | director | score |
++---------+------+----------+-------+
+| longzhu | 2004 | kdjhg    | 7     |
+| kenan   | 2008 | sdff     | 8     |
+| taiji   | 2013 | ldfhh    | 6     |
+| shouji  | 2015 | adas     | 5     |
++---------+------+----------+-------+
+mysql> select * from movies where name like "%zhu";
++---------+------+----------+-------+
+| name    | year | director | score |
++---------+------+----------+-------+
+| longzhu | 2004 | kdjhg    | 7     |
++---------+------+----------+-------+
+mysql> select * from movies where director like "%df%";
++-------+------+----------+-------+
+| name  | year | director | score |
++-------+------+----------+-------+
+| kenan | 2008 | sdff     | 8     |
+| taiji | 2013 | ldfhh    | 6     |
++-------+------+----------+-------+
+mysql> select * from movies where year like "2013";
++-------+------+----------+-------+
+| name  | year | director | score |
++-------+------+----------+-------+
+| taiji | 2013 | ldfhh    | 6     |
++-------+------+----------+-------+
+mysql> select * from movies order by score desc limit 1;
++-------+------+----------+-------+
+| name  | year | director | score |
++-------+------+----------+-------+
+| kenan | 2008 | sdff     | 8     |
++-------+------+----------+-------+
