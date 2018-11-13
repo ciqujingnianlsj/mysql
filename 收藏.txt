@@ -1,0 +1,52 @@
+ mysql> create table shoucang(id varchar(20) primary key unique,
+neirong varchar(30),price int,time datetime,quxiao enum('0','1'));
+mysql> desc shoucang;
++---------+---------------+------+-----+---------+-------+
+| Field   | Type          | Null | Key | Default | Extra |
++---------+---------------+------+-----+---------+-------+
+| id      | varchar(20)   | NO   | PRI | NULL    |       |
+| neirong | varchar(30)   | YES  |     | NULL    |       |
+| price   | int(11)       | YES  |     | NULL    |       |
+| time    | datetime      | YES  |     | NULL    |       |
+| quxiao  | enum('0','1') | YES  |     | NULL    |       |
++---------+---------------+------+-----+---------+-------+
+mysql> insert into shoucang(id,neirong,price,time) values('ef','adidasi',350,now());
+mysql> select * from shoucang;
++----+---------+-------+---------------------+--------+
+| id | neirong | price | time                | quxiao |
++----+---------+-------+---------------------+--------+
+| ef | adidasi |   350 | 2018-11-14 00:07:15 | NULL   |
++----+---------+-------+---------------------+--------+
+mysql> insert into shoucang(id,neirong,price,time) values('rty','nike',630,now());
+mysql> select * from shoucang;
++-----+---------+-------+---------------------+--------+
+| id  | neirong | price | time                | quxiao |
++-----+---------+-------+---------------------+--------+
+| ef  | adidasi |   350 | 2018-11-14 00:07:15 | NULL   |
+| rty | nike    |   630 | 2018-11-14 00:08:33 | NULL   |
++-----+---------+-------+---------------------+--------+
+mysql> insert into shoucang(id,neirong,price,time) values('kj','gkjf',264,now());
+mysql> select * from shoucang;
++-----+---------+-------+---------------------+--------+
+| id  | neirong | price | time                | quxiao |
++-----+---------+-------+---------------------+--------+
+| ef  | adidasi |   350 | 2018-11-14 00:07:15 | NULL   |
+| kj  | gkjf    |   264 | 2018-11-14 00:09:22 | NULL   |
+| rty | nike    |   630 | 2018-11-14 00:08:33 | NULL   |
++-----+---------+-------+---------------------+--------+
+mysql> alter table shoucang change quxiao quxiao bit default 1;
+Query OK, 3 rows affected (0.11 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+mysql> update shoucang set quxiao=0 where neirong='nike';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from shoucang;
++-----+---------+-------+---------------------+--------+
+| id  | neirong | price | time                | quxiao |
++-----+---------+-------+---------------------+--------+
+| ef  | adidasi |   350 | 2018-11-14 00:07:15 | NULL   |
+| kj  | gkjf    |   264 | 2018-11-14 00:09:22 | NULL   |
+| rty | nike    |   630 | 2018-11-14 00:08:33 |        |
++-----+---------+-------+---------------------+--------+
+3 rows in set (0.00 sec)
