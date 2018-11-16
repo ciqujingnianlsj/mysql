@@ -1,0 +1,53 @@
+mysql> create table yonghu(userID int auto_increment primary key);
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> alter table yonghu add logindate datetime;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table yonghu add method set('app','pc','ipad');
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table yonghu add uername varchar(20);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select case
+    -> when abs(datediff(logindate,now()))>30 then"你去死吧"
+    -> when abs(datediff(logindate,now()))>15 then"你回不回来"
+    -> when abs(datediff(logindate,now()))>7 then"我想你了"
+    -> end from yonghu;
+Empty set (0.00 sec)
+
+mysql> desc yonghu;
++-----------+------------------------+------+-----+---------+----------------+
+| Field     | Type                   | Null | Key | Default | Extra          |
++-----------+------------------------+------+-----+---------+----------------+
+| userID    | int(11)                | NO   | PRI | NULL    | auto_increment |
+| logindate | datetime               | YES  |     | NULL    |                |
+| method    | set('app','pc','ipad') | YES  |     | NULL    |                |
+| uername   | varchar(20)            | YES  |     | NULL    |                |
++-----------+------------------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> insert into yonghu(userID,logindate,method,uername)values('1',now(),'pc','djs');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into yonghu(userID,logindate,method,uername)values('2',now(),'ipad','khjk');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into yonghu(userID,logindate,method,uername)values('3',now(),'app','fjk');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from yonghu;
++--------+---------------------+--------+---------+
+| userID | logindate           | method | uername |
++--------+---------------------+--------+---------+
+|      1 | 2018-11-16 14:18:01 | pc     | djs     |
+|      2 | 2018-11-16 14:18:24 | ipad   | khjk    |
+|      3 | 2018-11-16 14:18:46 | app    | fjk     |
++--------+---------------------+--------+---------+
+3 rows in set (0.00 sec)
+
+
